@@ -175,14 +175,3 @@ with DAG(
     """
 
     [t1, t2] >> t3
-
-# # build and run dag
-# dag = DAG('wandb_simple', default_args=default_args)
-
-# PythonOperator(dag=dag,
-#                task_id='wandb_simple',
-#                provide_context=False,
-#                python_callable=tune_with_callback,
-#                #op_args=['arguments_passed_to_callable'],
-#                #op_kwargs={'keyword_argument':'which will be passed to function'},
-#               )
