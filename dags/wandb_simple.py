@@ -173,5 +173,6 @@ with DAG(
     Runs the ray+wandb example
     **Credit:** https://docs.ray.io/en/latest/tune/examples/tune-wandb.html
     """
+    )
 
     [t1, t2] >> t3
