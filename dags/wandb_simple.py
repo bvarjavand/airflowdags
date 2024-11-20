@@ -152,6 +152,6 @@ with DAG(
     #     do_xcom_push=True,
     # )
 
-    PythonOperator(task_id="wandb-simple", python_callable=tune_with_callback)
+    PythonOperator(task_id="wandb-simple", python_callable=tune_trainable)
     # Runs the ray+wandb example with some extra setup
     # **Credit:** https://docs.ray.io/en/latest/tune/examples/tune-wandb.html
