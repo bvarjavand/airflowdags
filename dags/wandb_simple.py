@@ -114,7 +114,7 @@ with DAG(
         "email": ["airflow@example.com"],
         "email_on_failure": False,
         "email_on_retry": False,
-        "retries": 1,
+        "retries": 0, # or 1
         "retry_delay": timedelta(minutes=5),
         # 'queue': 'bash_queue',
         # 'pool': 'backfill',
@@ -137,21 +137,8 @@ with DAG(
     tags=["example"],
 ) as dag:
     dag.doc_md = """
-    This is a documentation placed anywhere
+    This is documentation placed anywhere
     """
-
-    t1 = BashOperator(
-        task_id="sleep",
-        bash_command="sleep 2",
-        retries=3,
-    )
-
-    t1.doc_md = textwrap.dedent(
-        """\
-    #### Task Documentation
-    Can be any kind of task to run. In this case, sleep for 2s.
-    """
-    )
 
     # the KPO (KubernetesPodOperator) requires setting up an image and entire pod creation, which is more suitable for heavier workloads
     # condier additional documentation here: https://airflow.apache.org/docs/apache-airflow-providers-cncf-kubernetes/stable/operators.html#
@@ -165,9 +152,9 @@ with DAG(
     #     do_xcom_push=True,
     # )
 
-    t2 = PythonOperator(task_id="wandb-simple", python_callable=tune_with_callback)
+    t1 = PythonOperator(task_id="wandb-simple", python_callable=tune_with_callback)
 
-    t2.doc_md = textwrap.dedent(
+    t1.doc_md = textwrap.dedent(
         """\
     #### Task Documentation
     Runs the ray+wandb example with some extra setup
@@ -175,4 +162,4 @@ with DAG(
     """
     )
 
-    t1  >> t2
+    t1
