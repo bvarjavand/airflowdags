@@ -52,7 +52,7 @@ with DAG(
         retries=3,
     )
 
-    t2.doc_md = textwrap.dedent(
+    t1.doc_md = textwrap.dedent(
         """\
     #### Task Documentation
     Can be any kind of task to run. In this case, sleep for 2s.
