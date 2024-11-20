@@ -6,6 +6,34 @@ import textwrap
 
 #### Defining the python code
 
+import numpy as np
+import ray
+from ray import train, tune
+from ray.air.integrations.wandb import WandbLoggerCallback, setup_wandb
+
+def train_function(config):
+    for i in range(30):
+        loss = config["mean"] + config["sd"] * np.random.randn()
+        train.report({"loss": loss})
+
+def tune_with_callback():
+    """Example for using a WandbLoggerCallback with the function API"""
+    tuner = tune.Tuner(
+        train_function,
+        tune_config=tune.TuneConfig(
+            metric="loss",
+            mode="min",
+        ),
+        run_config=train.RunConfig(
+            callbacks=[WandbLoggerCallback(project="Wandb_example")]
+        ),
+        param_space={
+            "mean": tune.grid_search([1, 2, 3, 4, 5]),
+            "sd": tune.uniform(0.2, 0.8),
+        },
+    )
+    tuner.fit()
+
 def basic():
     myvar = "Hello World!"
     print(myvar)
