@@ -152,14 +152,6 @@ with DAG(
     #     do_xcom_push=True,
     # )
 
-    t1 = PythonOperator(task_id="wandb-simple", python_callable=tune_with_callback)
-
-    t1.doc_md = textwrap.dedent(
-        """\
-    #### Task Documentation
-    Runs the ray+wandb example with some extra setup
-    **Credit:** https://docs.ray.io/en/latest/tune/examples/tune-wandb.html
-    """
-    )
-
-    t1
+    PythonOperator(task_id="wandb-simple", python_callable=tune_with_callback)
+    # Runs the ray+wandb example with some extra setup
+    # **Credit:** https://docs.ray.io/en/latest/tune/examples/tune-wandb.html
