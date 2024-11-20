@@ -7,6 +7,7 @@ from airflow.operators.bash import BashOperator
 from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
 
 from datetime import datetime, timedelta
+import textwrap
 
 
 # run the dag
