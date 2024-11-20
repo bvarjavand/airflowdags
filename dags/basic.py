@@ -12,7 +12,7 @@ def basic():
 
 
 with DAG(
-    "wandb_simple",
+    "basic",
     default_args={
         "depends_on_past": False,
         "email": ["airflow@example.com"],
