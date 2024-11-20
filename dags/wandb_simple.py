@@ -3,8 +3,8 @@ from airflow.models.dag import DAG
 
 # Operators; we need this to operate!
 from airflow.operators.bash import BashOperator
-# from airflow.operators.python_operator import PythonOperator
-from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
+# from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
+from airflow.operators.python_operator import PythonOperator
 
 from datetime import datetime, timedelta
 import textwrap
