@@ -31,4 +31,4 @@ with DAG(
     This is documentation placed anywhere
     """
 
-    PythonOperator(task_id="basic", python_callable=basic)
+    t1 = PythonOperator(task_id="basic", python_callable=basic)
