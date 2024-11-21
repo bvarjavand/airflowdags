@@ -1,4 +1,5 @@
 import numpy as np
+
 import ray
 from ray import train, tune
 from ray.air.integrations.wandb import WandbLoggerCallback, setup_wandb
@@ -26,7 +27,7 @@ def tune_with_callback():
     )
     tuner.fit()
 
-def train_function_wandb(config): # setup_wandb behavior is strange
+def train_function_wandb(config):
     wandb = setup_wandb(config, project="Wandb_example")
 
     for i in range(30):
@@ -87,3 +88,19 @@ def tune_trainable():
     results = tuner.fit()
 
     return results.get_best_result().config
+
+if __name__ == '__main__':
+    import os
+
+    mock_api = False
+    
+    if mock_api:
+        os.environ.setdefault("WANDB_MODE", "disabled")
+        os.environ.setdefault("WANDB_API_KEY", "abcd")
+        ray.init(
+            runtime_env={"env_vars": {"WANDB_MODE": "disabled", "WANDB_API_KEY": "abcd"}}
+        )
+    
+    tune_with_callback()
+    #tune_with_setup()
+    #tune_trainable()
