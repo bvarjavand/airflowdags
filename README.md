@@ -13,5 +13,8 @@ Starting a Ray runtime: https://docs.ray.io/en/latest/ray-core/starting-ray.html
 ##### Connecting Ray to Wandb:
 The cleanest way including different options is contained in the `wandb_simple.py` scripts and discussed further here: https://docs.ray.io/en/latest/tune/examples/tune-wandb.html
 
+##### Connecting Ray to MLflow:
+Here's the docs: https://docs.ray.io/en/latest/tune/examples/tune-mlflow.html
+
 ##### Connecting Airflow to Ray:
 create the connection to the ray cluster with `http://<RayCluster name>-head-svc:8265`: https://docs.ray.io/en/latest/cluster/configure-manage-dashboard.html#viewing-ray-dashboard-in-browsers
