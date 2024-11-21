@@ -18,3 +18,6 @@ Here's the docs: https://docs.ray.io/en/latest/tune/examples/tune-mlflow.html
 
 ##### Connecting Airflow to Ray:
 create the connection to the ray cluster with `http://<RayCluster name>-head-svc:8265`: https://docs.ray.io/en/latest/cluster/configure-manage-dashboard.html#viewing-ray-dashboard-in-browsers
+
+##### Top-Down approach:
+https://www.astronomer.io/docs/learn/reference-architecture-fine-tuning-anyscale/
