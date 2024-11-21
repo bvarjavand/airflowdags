@@ -33,7 +33,7 @@ def train_function_wandb(config):
     for i in range(30):
         loss = config["mean"] + config["sd"] * np.random.randn()
         train.report({"loss": loss})
-        #wandb.log(dict(loss=loss))
+        #wandb.log(dict(loss=loss)) # TODO you can use the callback for now, wandb.log isn't performing normally
 
 def tune_with_setup():
     """Example for using the setup_wandb utility with the function API"""
